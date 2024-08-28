@@ -53,9 +53,9 @@ This repository offers an advanced and comprehensive solution for gender detecti
   - Stores visual representations of model accuracy and confusion matrices for easy reference and reporting.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0a3fa413-8222-4f6a-930f-99d39574e2ab" alt="model_accuracy">
+  <img src="https://github.com/user-attachments/assets/0a3fa413-8222-4f6a-930f-99d39574e2ab" alt="model_accuracy" width="45%" style="display: inline-block;"/>
+  <img src="https://github.com/user-attachments/assets/123df021-9431-4e9c-b379-fc3d72532c27" alt="confusion_matrix" width="45%" style="display: inline-block;"/>
 </p>
-![confusion_matrix](https://github.com/user-attachments/assets/123df021-9431-4e9c-b379-fc3d72532c27)
 
 
 ## System Requirements
