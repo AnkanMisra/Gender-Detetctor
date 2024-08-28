@@ -52,7 +52,9 @@ This repository offers an advanced and comprehensive solution for gender detecti
   - Automatically logs analysis results in a CSV file, including predicted gender, actual gender, probability scores, and timestamps.
   - Stores visual representations of model accuracy and confusion matrices for easy reference and reporting.
 
-![model_accuracy](https://github.com/user-attachments/assets/0a3fa413-8222-4f6a-930f-99d39574e2ab)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0a3fa413-8222-4f6a-930f-99d39574e2ab" alt="model_accuracy">
+</p>
 ![confusion_matrix](https://github.com/user-attachments/assets/123df021-9431-4e9c-b379-fc3d72532c27)
 
 
