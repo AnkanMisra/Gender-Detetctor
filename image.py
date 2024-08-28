@@ -6,7 +6,6 @@ import csv
 import pandas as pd
 
 def load_actual_genders(filename="Data/actual_genders.csv"):
-    # Load the actual genders from the CSV file into a dictionary
     df = pd.read_csv(filename)
     actual_genders = dict(zip(df['Filename'], df['Actual Gender']))
     return actual_genders
@@ -32,7 +31,6 @@ def analyze_photo(photo_path, actual_gender):
         return
 
     try:
-        # Analyze gender using DeepFace
         result = DeepFace.analyze(img, actions=("gender",), enforce_detection=False)
         if result:
             gender_probabilities = result[0]['gender']
@@ -45,7 +43,6 @@ def analyze_photo(photo_path, actual_gender):
             print(f"Dominant gender: {dominant_gender}")
             print(f"Actual gender: {actual_gender}")
 
-            # Save the results to the CSV file
             save_to_csv([photo_path, dominant_gender, actual_gender, gender_probabilities['Woman'], gender_probabilities['Man'], timestamp])
 
         else:
