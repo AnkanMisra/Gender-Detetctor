@@ -1,38 +1,9 @@
 import cv2
 from deepface import DeepFace
 import os
-import sys
 import time
+import sys
 import numpy as np
-
-def analyze_photo(photo_path):
-    img = cv2.imread(photo_path)
-    if img is None:
-        print(f"Error: Could not open image at {photo_path}")
-        return
-
-    try:
-        result = DeepFace.analyze(img, actions=("gender",), enforce_detection=False)
-        if result:
-            gender_probabilities = result[0]['gender']
-            dominant_gender = result[0]['dominant_gender']
-
-            print(f"Photo Gender Analysis:")
-            print(f"Women: {gender_probabilities['Woman']:.2f}%")
-            print(f"Men: {gender_probabilities['Man']:.2f}%")
-            print(f"Dominant gender: {dominant_gender}")
-
-            cv2.putText(img, f"Dominant Gender: {dominant_gender}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            cv2.imshow('Photo', img)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
-        else:
-            print("No face detected in the photo.")
-
-    except Exception as e:
-        print(f"Error analyzing photo: {e}")
-
-    sys.exit()
 
 def analyze_live_video(duration):
     cap = cv2.VideoCapture(0)
@@ -151,36 +122,16 @@ def analyze_video(video_path):
 
 def main():
     print("Choose an option:")
-    print("1. Analyze a photo from the 'faces' folder")
-    print("2. Analyze live video from webcam")
-    print("3. Analyze a video from the 'video' folder")
+    print("1. Analyze live video from webcam")
+    print("2. Analyze a video from the 'video' folder")
 
-    choice = input("Enter 1, 2, or 3: ")
+    choice = input("Enter 1 or 2: ")
 
     if choice == "1":
-        faces_folder = "faces"
-        photos = os.listdir(faces_folder)
-
-        if not photos:
-            print(f"No photos found in the '{faces_folder}' folder.")
-            return
-
-        print("Available photos:")
-        for i, photo in enumerate(photos):
-            print(f"{i+1}. {photo}")
-
-        photo_choice = int(input("Enter the number of the photo to analyze: "))
-        if 1 <= photo_choice <= len(photos):
-            photo_path = os.path.join(faces_folder, photos[photo_choice - 1])
-            analyze_photo(photo_path)
-        else:
-            print("Invalid choice. Exiting.")
-
-    elif choice == "2":
         duration = int(input("Enter the duration for webcam analysis in seconds: "))
         analyze_live_video(duration)
 
-    elif choice == "3":
+    elif choice == "2":
         video_folder = "video"
         videos = os.listdir(video_folder)
 
