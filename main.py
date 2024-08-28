@@ -37,7 +37,7 @@ def analyze_photo(photo_path):
     # Exit the program after displaying the results
     sys.exit()
 
-def analyze_live_video():
+def analyze_live_video(duration):
     cap = cv2.VideoCapture(0)
 
     if not cap.isOpened():
@@ -74,7 +74,7 @@ def analyze_live_video():
 
         cv2.imshow('Webcam', frame)
 
-        if time.time() - start_time > 10:
+        if time.time() - start_time > duration:
             break
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -88,7 +88,7 @@ def analyze_live_video():
         avg_men_score = np.mean(men_scores)
         final_dominant_gender = "Man" if avg_men_score > avg_women_score else "Woman"
 
-        print(f"Final Gender Analysis over 10 seconds:")
+        print(f"Final Gender Analysis over {duration} seconds:")
         print(f"Average Women: {avg_women_score:.2f}%")
         print(f"Average Men: {avg_men_score:.2f}%")
         print(f"Final Dominant Gender: {final_dominant_gender}")
@@ -180,7 +180,8 @@ def main():
             print("Invalid choice. Exiting.")
 
     elif choice == "2":
-        analyze_live_video()
+        duration = int(input("Enter the duration for webcam analysis in seconds: "))
+        analyze_live_video(duration)
 
     elif choice == "3":
         video_folder = "video"
