@@ -17,13 +17,11 @@ def analyze_photo(photo_path):
             gender_probabilities = result[0]['gender']
             dominant_gender = result[0]['dominant_gender']
 
-            # Display results
             print(f"Photo Gender Analysis:")
             print(f"Women: {gender_probabilities['Woman']:.2f}%")
             print(f"Men: {gender_probabilities['Man']:.2f}%")
             print(f"Dominant gender: {dominant_gender}")
 
-            # Optionally display the photo with the dominant gender
             cv2.putText(img, f"Dominant Gender: {dominant_gender}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             cv2.imshow('Photo', img)
             cv2.waitKey(0)
@@ -34,7 +32,6 @@ def analyze_photo(photo_path):
     except Exception as e:
         print(f"Error analyzing photo: {e}")
 
-    # Exit the program after displaying the results
     sys.exit()
 
 def analyze_live_video(duration):
